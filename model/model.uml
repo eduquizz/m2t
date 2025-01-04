@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_kjA-wMrIEe-0QPK4l2h1iw" name="model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_kkqkkMrIEe-0QPK4l2h1iw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qO_qIMrIEe-0QPK4l2h1iw" name="Questionnaire">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Pni08MrJEe-0QPK4l2h1iw" name="score">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_xKxUAMrJEe-0QPK4l2h1iw" name="title">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_y1lQAMrJEe-0QPK4l2h1iw" name="canGoBack">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_zgiRgMrJEe-0QPK4l2h1iw" name="isShuffled">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_rm7GYMrIEe-0QPK4l2h1iw" name="Page" isAbstract="true"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_sgytoMrIEe-0QPK4l2h1iw" name="ResultPage">
+    <generalization xmi:type="uml:Generalization" xmi:id="_bc75IMrKEe-0QPK4l2h1iw" general="_rm7GYMrIEe-0QPK4l2h1iw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_1IoGIMrIEe-0QPK4l2h1iw" name="SubmitPage">
+    <generalization xmi:type="uml:Generalization" xmi:id="_diEZoMrKEe-0QPK4l2h1iw" general="_rm7GYMrIEe-0QPK4l2h1iw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2i2ocMrIEe-0QPK4l2h1iw" name="Question">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JXeIkMrKEe-0QPK4l2h1iw" name="text">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_4bzHEMrIEe-0QPK4l2h1iw" name="Button" isAbstract="true">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_9FsN4MrJEe-0QPK4l2h1iw" name="isVisible">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-M7iwMrJEe-0QPK4l2h1iw" name="field"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5awCoMrIEe-0QPK4l2h1iw" name="BackButton">
+    <generalization xmi:type="uml:Generalization" xmi:id="_WpRV0MrKEe-0QPK4l2h1iw" general="_4bzHEMrIEe-0QPK4l2h1iw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6gs-EMrIEe-0QPK4l2h1iw" name="NextButton">
+    <generalization xmi:type="uml:Generalization" xmi:id="_XFhM8MrKEe-0QPK4l2h1iw" general="_4bzHEMrIEe-0QPK4l2h1iw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7qaYIMrIEe-0QPK4l2h1iw" name="SubmitButton">
+    <generalization xmi:type="uml:Generalization" xmi:id="_XgVgsMrKEe-0QPK4l2h1iw" general="_4bzHEMrIEe-0QPK4l2h1iw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__SerAMrIEe-0QPK4l2h1iw" name="Reponse">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_M5XiAMrKEe-0QPK4l2h1iw" name="text">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_QK6LQMrKEe-0QPK4l2h1iw" name="isAnswer">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_cDpJQMrJEe-0QPK4l2h1iw" name="Navigable"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hBWj8MrKEe-0QPK4l2h1iw" name="QuestionPage">
+    <generalization xmi:type="uml:Generalization" xmi:id="_lXtgMMrKEe-0QPK4l2h1iw" general="_rm7GYMrIEe-0QPK4l2h1iw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_x6C_YMrKEe-0QPK4l2h1iw" memberEnd="_x6E0kMrKEe-0QPK4l2h1iw _x6E0kcrKEe-0QPK4l2h1iw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_x6ENgMrKEe-0QPK4l2h1iw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x6ENgcrKEe-0QPK4l2h1iw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_x6E0kMrKEe-0QPK4l2h1iw" name="reponse" type="__SerAMrIEe-0QPK4l2h1iw" association="_x6C_YMrKEe-0QPK4l2h1iw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8pUlgMrKEe-0QPK4l2h1iw" value="2"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8pdIYMrKEe-0QPK4l2h1iw" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_x6E0kcrKEe-0QPK4l2h1iw" name="question" type="_2i2ocMrIEe-0QPK4l2h1iw" association="_x6C_YMrKEe-0QPK4l2h1iw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JNDL0MrLEe-0QPK4l2h1iw" memberEnd="_JNDy4srLEe-0QPK4l2h1iw _JNEZ8MrLEe-0QPK4l2h1iw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JNDy4MrLEe-0QPK4l2h1iw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JNDy4crLEe-0QPK4l2h1iw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JNDy4srLEe-0QPK4l2h1iw" name="question" type="_2i2ocMrIEe-0QPK4l2h1iw" association="_JNDL0MrLEe-0QPK4l2h1iw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JNEZ8MrLEe-0QPK4l2h1iw" name="questionpage" type="_hBWj8MrKEe-0QPK4l2h1iw" association="_JNDL0MrLEe-0QPK4l2h1iw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_QkhvsMrLEe-0QPK4l2h1iw" client="_hBWj8MrKEe-0QPK4l2h1iw" supplier="_cDpJQMrJEe-0QPK4l2h1iw"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_Sy2BYMrLEe-0QPK4l2h1iw" client="_1IoGIMrIEe-0QPK4l2h1iw" supplier="_cDpJQMrJEe-0QPK4l2h1iw"/>
+</uml:Model>
