@@ -21,3 +21,4 @@ Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: m2t.main
 Automatic-Module-Name: m2t
+Import-Package: mm2

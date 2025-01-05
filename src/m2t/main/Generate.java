@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import mm2.Mm2Package;
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
@@ -335,14 +335,13 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated
+     * @generated NOT
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
-        if (!isInWorkspace(org.eclipse.uml2.uml.UMLPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.uml2.uml.UMLPackage.eINSTANCE.getNsURI(), org.eclipse.uml2.uml.UMLPackage.eINSTANCE);
-        }
+        
+        resourceSet.getPackageRegistry().put(Mm2Package.eNS_URI, Mm2Package.eINSTANCE);
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
@@ -350,7 +349,7 @@ public class Generate extends AbstractAcceleoGenerator {
          * of the Acceleo module with the main template that has caused the creation of this class will
          * revert your modifications.
          */
-        
+    	
         /*
          * If you need additional package registrations, you can register them here. The following line
          * (in comment) is an example of the package registration for UML.
@@ -382,11 +381,13 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated
+     * @generated NOT
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
         super.registerResourceFactories(resourceSet);
+        
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
          * tag in the Javadoc of this method to "@generated NOT". Without this new tag, any compilation
