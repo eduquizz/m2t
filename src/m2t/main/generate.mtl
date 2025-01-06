@@ -23,13 +23,11 @@ if (difficulty = 4) then 'pico-color-pumpkin-350' else
 </head>
 <body>
     <main class="container">
-		<article>
-			<hgroup>
-		        <h1>Questionnaire [aQuestionnaire.nom/]</h1>
-				<p>[aQuestionnaire.page->size() - 2 /] questions, retour en arrière [if (aQuestionnaire.retourAutorise)]autorisé[else]interdit[/if]</p>
-			</hgroup>
-	        <input type="submit" value="Démarrer le quiz !" id="startButton" onclick="startQuiz()">
-		</article>
+		<hgroup>
+	        <h1>Questionnaire [aQuestionnaire.nom/]</h1>
+			<p>[aQuestionnaire.page->size() - 2 /] questions, retour en arrière [if (aQuestionnaire.retourAutorise)]autorisé[else]interdit[/if]</p>
+		</hgroup>
+        <input type="submit" value="Démarrer le quiz !" id="startButton" onclick="startQuiz()">
     </main>
 
     <main class="container">
