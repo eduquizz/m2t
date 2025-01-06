@@ -82,13 +82,13 @@ if (difficulty = 4) then 'pico-color-pumpkin-350' else
 								[if q.reponsesMultiples]
 									[for (r : Reponse | q.reponse)]
 										<label>
-								            <input type="checkbox" name="soumission-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]" disabled> [r.texte /]
+								            <input type="checkbox" name="question-[aQuestionnaire.page->indexOf(p) /]-[q.reponse->indexOf(r) /]" disabled> [r.texte /]
 								        </label>
 									[/for]
 								[else]
 									[for (r : Reponse | q.reponse)]
 										<label>
-								            <input type="radio" name="soumission-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]" disabled> [r.texte /]
+								            <input type="radio" name="question-[aQuestionnaire.page->indexOf(p) /]-[q.reponse->indexOf(r) /]" disabled> [r.texte /]
 								        </label>
 									[/for]
 								[/if]
@@ -97,7 +97,7 @@ if (difficulty = 4) then 'pico-color-pumpkin-350' else
 					</div>
 					<div role="group">
 			            [if (aQuestionnaire.retourAutorise)]<input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">[/if]
-			            <input type="button" value="Soumettre" onclick="showAnswers()" id="submitButton">
+			            <input type="button" value="Soumettre" onclick="showResults()" id="submitButton">
 			        </div>
 				[/if]
 				[if p.oclIsTypeOf(PageResultat)]
