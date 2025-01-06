@@ -2,367 +2,393 @@
 <html lang="fr" xml:lang="fr">
 <head>
     <title>Questionnaire Fruits et légumes</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
 	<link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
 <body>
-    <main>
-        <h1>Fruits et légumes</h1>
-		<h3>Retour en arrière autorisé</h3>
-        <input type="submit" value="Démarrer le quiz !" id="startButton" onclick="startQuiz()">
+    <main class="container">
+		<article>
+			<hgroup>
+		        <h1>Questionnaire Fruits et légumes</h1>
+				<p>7 questions, retour en arrière autorisé</p>
+			</hgroup>
+	        <input type="submit" value="Démarrer le quiz !" id="startButton" onclick="startQuiz()">
+		</article>
     </main>
 
-    <main>
+    <main class="container">
 			<article class="hidden">
-				<h1>Questionnaire en cours</h1>
-					<h2>Comment manger la tomate ?</h2>
-					<h3>Difficulté : ★★★★★</h3>
-						<h3>Etiquettes :</h3>
-						<div>
-							<span>Tomate</span> <span>Manger</span> 
-						</div>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Questionnaire en cours</p>
+				</hgroup>
 					<div>
-								<label>
-						            <input type="checkbox" name="question-1" value="question-1-1"> Cuite
-						        	<input type="hidden" name="reponse-1-1" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="checkbox" name="question-1" value="question-1-2"> Crue
-						        	<input type="hidden" name="reponse-1-2" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="checkbox" name="question-1" value="question-1-3"> Glacée
-						        	<input type="hidden" name="reponse-1-3" value="false">
-								</label>
-								<br>
+						<progress value="1" max="8" />
 					</div>
-					<div id="navButtons">
+					<p>Difficulté : <span class="pico-color-red-500">★★★★★</span></p>
+						<p>Étiquette(s) : <mark>Tomate</mark> <mark>Manger</mark> </p>
+					<div>
+						<fieldset>
+							<legend>Comment manger la tomate ?</legend>
+									<label>
+							            <input type="checkbox" name="question-1" value="question-1-1"> Cuite
+							        	<input type="hidden" name="reponse-1-1" value="true">
+									</label>
+									<label>
+							            <input type="checkbox" name="question-1" value="question-1-2"> Crue
+							        	<input type="hidden" name="reponse-1-2" value="true">
+									</label>
+									<label>
+							            <input type="checkbox" name="question-1" value="question-1-3"> Glacée
+							        	<input type="hidden" name="reponse-1-3" value="false">
+									</label>
+						</fieldset>
+					</div>
+					<div role="group">
 			            <input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">
 			            <input type="button" value="Suivant" onclick="pageSuivante()" id="nextButton">
 			        </div>
             </article>
 			<article class="hidden">
-				<h1>Questionnaire en cours</h1>
-					<h2>Quel fruit est connu pour son acidité ?</h2>
-					<h3>Difficulté : ★★★★</h3>
-						<h3>Etiquettes :</h3>
-						<div>
-							<span>Acidité</span> 
-						</div>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Questionnaire en cours</p>
+				</hgroup>
 					<div>
-								<label>
-						            <input type="radio" name="question-2" value="question-2-1"> Citron
-						        	<input type="hidden" name="reponse-2-1" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-2" value="question-2-2"> Banane
-						        	<input type="hidden" name="reponse-2-2" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-2" value="question-2-3"> Pomme de terre
-						        	<input type="hidden" name="reponse-2-3" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-2" value="question-2-4"> Groseille
-						        	<input type="hidden" name="reponse-2-4" value="false">
-								</label>
-								<br>
+						<progress value="2" max="8" />
 					</div>
-					<div id="navButtons">
+					<p>Difficulté : <span class="pico-color-pumpkin-350">★★★★</span></p>
+						<p>Étiquette(s) : <mark>Acidité</mark> </p>
+					<div>
+						<fieldset>
+							<legend>Quel fruit est connu pour son acidité ?</legend>
+									<label>
+							            <input type="radio" name="question-2" value="question-2-1"> Citron
+							        	<input type="hidden" name="reponse-2-1" value="true">
+									</label>
+									<label>
+							            <input type="radio" name="question-2" value="question-2-2"> Banane
+							        	<input type="hidden" name="reponse-2-2" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-2" value="question-2-3"> Pomme de terre
+							        	<input type="hidden" name="reponse-2-3" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-2" value="question-2-4"> Groseille
+							        	<input type="hidden" name="reponse-2-4" value="false">
+									</label>
+						</fieldset>
+					</div>
+					<div role="group">
 			            <input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">
 			            <input type="button" value="Suivant" onclick="pageSuivante()" id="nextButton">
 			        </div>
             </article>
 			<article class="hidden">
-				<h1>Questionnaire en cours</h1>
-					<h2>Quels légumes sont verts ?</h2>
-					<h3>Difficulté : ★★★</h3>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Questionnaire en cours</p>
+				</hgroup>
 					<div>
-								<label>
-						            <input type="checkbox" name="question-3" value="question-3-1"> Brocoli
-						        	<input type="hidden" name="reponse-3-1" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="checkbox" name="question-3" value="question-3-2"> Épinard
-						        	<input type="hidden" name="reponse-3-2" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="checkbox" name="question-3" value="question-3-3"> Carotte
-						        	<input type="hidden" name="reponse-3-3" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="checkbox" name="question-3" value="question-3-4"> Haricot vert
-						        	<input type="hidden" name="reponse-3-4" value="true">
-								</label>
-								<br>
+						<progress value="3" max="8" />
 					</div>
-					<div id="navButtons">
+					<p>Difficulté : <span class="pico-color-amber-200">★★★</span></p>
+					<div>
+						<fieldset>
+							<legend>Quels légumes sont verts ?</legend>
+									<label>
+							            <input type="checkbox" name="question-3" value="question-3-1"> Brocoli
+							        	<input type="hidden" name="reponse-3-1" value="true">
+									</label>
+									<label>
+							            <input type="checkbox" name="question-3" value="question-3-2"> Épinard
+							        	<input type="hidden" name="reponse-3-2" value="true">
+									</label>
+									<label>
+							            <input type="checkbox" name="question-3" value="question-3-3"> Carotte
+							        	<input type="hidden" name="reponse-3-3" value="false">
+									</label>
+									<label>
+							            <input type="checkbox" name="question-3" value="question-3-4"> Haricot vert
+							        	<input type="hidden" name="reponse-3-4" value="true">
+									</label>
+						</fieldset>
+					</div>
+					<div role="group">
 			            <input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">
 			            <input type="button" value="Suivant" onclick="pageSuivante()" id="nextButton">
 			        </div>
             </article>
 			<article class="hidden">
-				<h1>Questionnaire en cours</h1>
-					<h2>Quel fruit est souvent utilisé pour faire du vin ?</h2>
-					<h3>Difficulté : ★★★★</h3>
-						<h3>Etiquettes :</h3>
-						<div>
-							<span>Vin</span> 
-						</div>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Questionnaire en cours</p>
+				</hgroup>
 					<div>
-								<label>
-						            <input type="radio" name="question-4" value="question-4-1"> Pomme
-						        	<input type="hidden" name="reponse-4-1" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-4" value="question-4-2"> Raisin
-						        	<input type="hidden" name="reponse-4-2" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-4" value="question-4-3"> Cerise
-						        	<input type="hidden" name="reponse-4-3" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-4" value="question-4-4"> Ananas
-						        	<input type="hidden" name="reponse-4-4" value="false">
-								</label>
-								<br>
+						<progress value="4" max="8" />
 					</div>
-					<div id="navButtons">
+					<p>Difficulté : <span class="pico-color-pumpkin-350">★★★★</span></p>
+						<p>Étiquette(s) : <mark>Vin</mark> </p>
+					<div>
+						<fieldset>
+							<legend>Quel fruit est souvent utilisé pour faire du vin ?</legend>
+									<label>
+							            <input type="radio" name="question-4" value="question-4-1"> Pomme
+							        	<input type="hidden" name="reponse-4-1" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-4" value="question-4-2"> Raisin
+							        	<input type="hidden" name="reponse-4-2" value="true">
+									</label>
+									<label>
+							            <input type="radio" name="question-4" value="question-4-3"> Cerise
+							        	<input type="hidden" name="reponse-4-3" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-4" value="question-4-4"> Ananas
+							        	<input type="hidden" name="reponse-4-4" value="false">
+									</label>
+						</fieldset>
+					</div>
+					<div role="group">
 			            <input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">
 			            <input type="button" value="Suivant" onclick="pageSuivante()" id="nextButton">
 			        </div>
             </article>
 			<article class="hidden">
-				<h1>Questionnaire en cours</h1>
-					<h2>Quels fruits sont riches en vitamine C ?</h2>
-					<h3>Difficulté : ★★★★</h3>
-						<h3>Etiquettes :</h3>
-						<div>
-							<span>Vitamines</span> 
-						</div>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Questionnaire en cours</p>
+				</hgroup>
 					<div>
-								<label>
-						            <input type="checkbox" name="question-5" value="question-5-1"> Orange
-						        	<input type="hidden" name="reponse-5-1" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="checkbox" name="question-5" value="question-5-2"> Kiwi
-						        	<input type="hidden" name="reponse-5-2" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="checkbox" name="question-5" value="question-5-3"> Pastèque
-						        	<input type="hidden" name="reponse-5-3" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="checkbox" name="question-5" value="question-5-4"> Fraise
-						        	<input type="hidden" name="reponse-5-4" value="true">
-								</label>
-								<br>
+						<progress value="5" max="8" />
 					</div>
-					<div id="navButtons">
+					<p>Difficulté : <span class="pico-color-pumpkin-350">★★★★</span></p>
+						<p>Étiquette(s) : <mark>Vitamines</mark> </p>
+					<div>
+						<fieldset>
+							<legend>Quels fruits sont riches en vitamine C ?</legend>
+									<label>
+							            <input type="checkbox" name="question-5" value="question-5-1"> Orange
+							        	<input type="hidden" name="reponse-5-1" value="true">
+									</label>
+									<label>
+							            <input type="checkbox" name="question-5" value="question-5-2"> Kiwi
+							        	<input type="hidden" name="reponse-5-2" value="true">
+									</label>
+									<label>
+							            <input type="checkbox" name="question-5" value="question-5-3"> Pastèque
+							        	<input type="hidden" name="reponse-5-3" value="false">
+									</label>
+									<label>
+							            <input type="checkbox" name="question-5" value="question-5-4"> Fraise
+							        	<input type="hidden" name="reponse-5-4" value="true">
+									</label>
+						</fieldset>
+					</div>
+					<div role="group">
 			            <input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">
 			            <input type="button" value="Suivant" onclick="pageSuivante()" id="nextButton">
 			        </div>
             </article>
 			<article class="hidden">
-				<h1>Questionnaire en cours</h1>
-					<h2>Quel légume est orange ?</h2>
-					<h3>Difficulté : ★★</h3>
-						<h3>Etiquettes :</h3>
-						<div>
-							<span>Couleurs</span> <span>Légumes</span> 
-						</div>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Questionnaire en cours</p>
+				</hgroup>
 					<div>
-								<label>
-						            <input type="radio" name="question-6" value="question-6-1"> Brocoli
-						        	<input type="hidden" name="reponse-6-1" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-6" value="question-6-2"> Carotte
-						        	<input type="hidden" name="reponse-6-2" value="true">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-6" value="question-6-3"> Épinard
-						        	<input type="hidden" name="reponse-6-3" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-6" value="question-6-4"> Haricot vert
-						        	<input type="hidden" name="reponse-6-4" value="false">
-								</label>
-								<br>
+						<progress value="6" max="8" />
 					</div>
-					<div id="navButtons">
+					<p>Difficulté : <span class="pico-color-green-400">★★</span></p>
+						<p>Étiquette(s) : <mark>Couleurs</mark> <mark>Légumes</mark> </p>
+					<div>
+						<fieldset>
+							<legend>Quel légume est orange ?</legend>
+									<label>
+							            <input type="radio" name="question-6" value="question-6-1"> Brocoli
+							        	<input type="hidden" name="reponse-6-1" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-6" value="question-6-2"> Carotte
+							        	<input type="hidden" name="reponse-6-2" value="true">
+									</label>
+									<label>
+							            <input type="radio" name="question-6" value="question-6-3"> Épinard
+							        	<input type="hidden" name="reponse-6-3" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-6" value="question-6-4"> Haricot vert
+							        	<input type="hidden" name="reponse-6-4" value="false">
+									</label>
+						</fieldset>
+					</div>
+					<div role="group">
 			            <input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">
 			            <input type="button" value="Suivant" onclick="pageSuivante()" id="nextButton">
 			        </div>
             </article>
 			<article class="hidden">
-				<h1>Questionnaire en cours</h1>
-					<h2>Quelle est une baie comestible ?</h2>
-					<h3>Difficulté : ★★★</h3>
-						<h3>Etiquettes :</h3>
-						<div>
-							<span>Fruits</span> <span>Baies</span> 
-						</div>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Questionnaire en cours</p>
+				</hgroup>
 					<div>
-								<label>
-						            <input type="radio" name="question-7" value="question-7-1"> Pomme de terre
-						        	<input type="hidden" name="reponse-7-1" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-7" value="question-7-2"> Navet
-						        	<input type="hidden" name="reponse-7-2" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-7" value="question-7-3"> Radis
-						        	<input type="hidden" name="reponse-7-3" value="false">
-								</label>
-								<br>
-								<label>
-						            <input type="radio" name="question-7" value="question-7-4"> Myrtille
-						        	<input type="hidden" name="reponse-7-4" value="true">
-								</label>
-								<br>
+						<progress value="7" max="8" />
 					</div>
-					<div id="navButtons">
+					<p>Difficulté : <span class="pico-color-amber-200">★★★</span></p>
+						<p>Étiquette(s) : <mark>Fruits</mark> <mark>Baies</mark> </p>
+					<div>
+						<fieldset>
+							<legend>Quelle est une baie comestible ?</legend>
+									<label>
+							            <input type="radio" name="question-7" value="question-7-1"> Pomme de terre
+							        	<input type="hidden" name="reponse-7-1" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-7" value="question-7-2"> Navet
+							        	<input type="hidden" name="reponse-7-2" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-7" value="question-7-3"> Radis
+							        	<input type="hidden" name="reponse-7-3" value="false">
+									</label>
+									<label>
+							            <input type="radio" name="question-7" value="question-7-4"> Myrtille
+							        	<input type="hidden" name="reponse-7-4" value="true">
+									</label>
+						</fieldset>
+					</div>
+					<div role="group">
 			            <input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">
 			            <input type="button" value="Suivant" onclick="pageSuivante()" id="nextButton">
 			        </div>
             </article>
 			<article class="hidden">
-				<h1>Soumission de vos réponses</h1>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Soumission de vos réponses</p>
+				</hgroup>
 					<div>
-							<h2>Comment manger la tomate ?</h2>
-							<div>
-										<label>
-								            <input type="checkbox" checked="TODO"> Cuite
-								        </label>
-										<label>
-								            <input type="checkbox" checked="TODO"> Crue
-								        </label>
-										<label>
-								            <input type="checkbox" checked="TODO"> Glacée
-								        </label>
-							</div>
-							<h2>Quel fruit est connu pour son acidité ?</h2>
-							<div>
-										<label>
-								            <input type="radio" checked="TODO"> Citron
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Banane
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Pomme de terre
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Groseille
-								        </label>
-							</div>
-							<h2>Quels légumes sont verts ?</h2>
-							<div>
-										<label>
-								            <input type="checkbox" checked="TODO"> Brocoli
-								        </label>
-										<label>
-								            <input type="checkbox" checked="TODO"> Épinard
-								        </label>
-										<label>
-								            <input type="checkbox" checked="TODO"> Carotte
-								        </label>
-										<label>
-								            <input type="checkbox" checked="TODO"> Haricot vert
-								        </label>
-							</div>
-							<h2>Quel fruit est souvent utilisé pour faire du vin ?</h2>
-							<div>
-										<label>
-								            <input type="radio" checked="TODO"> Pomme
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Raisin
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Cerise
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Ananas
-								        </label>
-							</div>
-							<h2>Quels fruits sont riches en vitamine C ?</h2>
-							<div>
-										<label>
-								            <input type="checkbox" checked="TODO"> Orange
-								        </label>
-										<label>
-								            <input type="checkbox" checked="TODO"> Kiwi
-								        </label>
-										<label>
-								            <input type="checkbox" checked="TODO"> Pastèque
-								        </label>
-										<label>
-								            <input type="checkbox" checked="TODO"> Fraise
-								        </label>
-							</div>
-							<h2>Quel légume est orange ?</h2>
-							<div>
-										<label>
-								            <input type="radio" checked="TODO"> Brocoli
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Carotte
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Épinard
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Haricot vert
-								        </label>
-							</div>
-							<h2>Quelle est une baie comestible ?</h2>
-							<div>
-										<label>
-								            <input type="radio" checked="TODO"> Pomme de terre
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Navet
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Radis
-								        </label>
-										<label>
-								            <input type="radio" checked="TODO"> Myrtille
-								        </label>
-							</div>
+						<progress value="8" max="8" />
 					</div>
-					<div id="navButtons">
+					<div>
+							<fieldset>
+								<legend>Comment manger la tomate ?</legend>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Cuite
+								        </label>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Crue
+								        </label>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Glacée
+								        </label>
+							</fieldset>
+							<fieldset>
+								<legend>Quel fruit est connu pour son acidité ?</legend>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Citron
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Banane
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Pomme de terre
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Groseille
+								        </label>
+							</fieldset>
+							<fieldset>
+								<legend>Quels légumes sont verts ?</legend>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Brocoli
+								        </label>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Épinard
+								        </label>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Carotte
+								        </label>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Haricot vert
+								        </label>
+							</fieldset>
+							<fieldset>
+								<legend>Quel fruit est souvent utilisé pour faire du vin ?</legend>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Pomme
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Raisin
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Cerise
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Ananas
+								        </label>
+							</fieldset>
+							<fieldset>
+								<legend>Quels fruits sont riches en vitamine C ?</legend>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Orange
+								        </label>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Kiwi
+								        </label>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Pastèque
+								        </label>
+										<label>
+								            <input type="checkbox" name="soumission-8-invalid" disabled> Fraise
+								        </label>
+							</fieldset>
+							<fieldset>
+								<legend>Quel légume est orange ?</legend>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Brocoli
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Carotte
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Épinard
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Haricot vert
+								        </label>
+							</fieldset>
+							<fieldset>
+								<legend>Quelle est une baie comestible ?</legend>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Pomme de terre
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Navet
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Radis
+								        </label>
+										<label>
+								            <input type="radio" name="soumission-8-invalid" disabled> Myrtille
+								        </label>
+							</fieldset>
+					</div>
+					<div role="group">
 			            <input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">
 			            <input type="button" value="Soumettre" onclick="showAnswers()" id="submitButton">
 			        </div>
             </article>
 			<article class="hidden">
-				<h1>Résultats du questionnaire</h1>
-					<h2>Vous avez obtenu un score de <span>TODO</span></h2>
+				<hgroup>
+			        <h1>Questionnaire Fruits et légumes</h1>
+					<p>Résultats du questionnaire</p>
+				</hgroup>
+					<p>Vous avez obtenu un score de <b><span id="resultat">0</span>/7</b>.</p>
             </article>
     </main>
 </body>

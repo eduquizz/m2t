@@ -1,6 +1,14 @@
 [comment encoding = UTF-8 /]
 [module generate('http://www.example.org/mm2')]
 
+[query public colorForDifficulty(difficulty: Integer): String =
+if (difficulty = 1) then 'pico-color-green-250' else
+if (difficulty = 2) then 'pico-color-green-400' else
+if (difficulty = 3) then 'pico-color-amber-200' else
+if (difficulty = 4) then 'pico-color-pumpkin-350' else
+'pico-color-red-500'  endif endif endif endif
+/]
+
 [template public generateElement(aQuestionnaire : Questionnaire)]
 [comment @main template/]
 [file (aQuestionnaire.nom.concat('.html'), false, 'UTF-8')]
@@ -8,49 +16,60 @@
 <html lang="fr" xml:lang="fr">
 <head>
     <title>Questionnaire [aQuestionnaire.nom/]</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
 	<link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
 <body>
-    <main>
-        <h1>[aQuestionnaire.nom/]</h1>
-		<h3>Retour en arrière [if (aQuestionnaire.retourAutorise)]autorisé[else]interdit[/if]</h3>
-        <input type="submit" value="Démarrer le quiz !" id="startButton" onclick="startQuiz()">
+    <main class="container">
+		<article>
+			<hgroup>
+		        <h1>Questionnaire [aQuestionnaire.nom/]</h1>
+				<p>[aQuestionnaire.page->size() - 2 /] questions, retour en arrière [if (aQuestionnaire.retourAutorise)]autorisé[else]interdit[/if]</p>
+			</hgroup>
+	        <input type="submit" value="Démarrer le quiz !" id="startButton" onclick="startQuiz()">
+		</article>
     </main>
 
-    <main>
+    <main class="container">
         [for (p : Page | aQuestionnaire.page)]
 			<article class="hidden">
-				<h1>[p.titre /]</h1>
+				<hgroup>
+			        <h1>Questionnaire [aQuestionnaire.nom/]</h1>
+					<p>[p.titre /]</p>
+				</hgroup>
+				[if not p.oclIsTypeOf(PageResultat)]
+					<div>
+						<progress value="[aQuestionnaire.page->indexOf(p) /]" max="[aQuestionnaire.page->size() - 1 /]" />
+					</div>
+				[/if]
 				[if p.oclIsTypeOf(PageQuestion)]
-					<h2>[p.oclAsType(PageQuestion).question.ennonce /]</h2>
-					<h3>Difficulté : [for (i : Integer | Sequence{1..p.oclAsType(PageQuestion).question.difficulte})]★[/for]</h3>
+					<p>Difficulté : <span class="[colorForDifficulty(p.oclAsType(PageQuestion).question.difficulte) /]">[for (i : Integer | Sequence{1..p.oclAsType(PageQuestion).question.difficulte})]★[/for]</span></p>
 					[if not p.oclAsType(PageQuestion).question.etiquette->isEmpty()]
-						<h3>Etiquettes :</h3>
-						<div>
-							[for (e : Etiquette | p.oclAsType(PageQuestion).question.etiquette)]<span>[e.nom /]</span> [/for]
-						</div>
+						<p>Étiquette(s) : [for (e : Etiquette | p.oclAsType(PageQuestion).question.etiquette)]<mark>[e.nom /]</mark> [/for]</p>
 					[/if]
 					<div>
-						[if p.oclAsType(PageQuestion).question.reponsesMultiples]
-							[for (r : Reponse | p.oclAsType(PageQuestion).question.reponse)]
-								<label>
-						            <input type="checkbox" name="question-[aQuestionnaire.page->indexOf(p) /]" value="question-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]"> [r.texte /]
-						        	<input type="hidden" name="reponse-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]" value="[r.estVraie /]">
-								</label>
-								<br>
-							[/for]
-						[else]
-							[for (r : Reponse | p.oclAsType(PageQuestion).question.reponse)]
-								<label>
-						            <input type="radio" name="question-[aQuestionnaire.page->indexOf(p) /]" value="question-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]"> [r.texte /]
-						        	<input type="hidden" name="reponse-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]" value="[r.estVraie /]">
-								</label>
-								<br>
-							[/for]
-						[/if]
+						<fieldset>
+							<legend>[p.oclAsType(PageQuestion).question.ennonce /]</legend>
+							[if p.oclAsType(PageQuestion).question.reponsesMultiples]
+								[for (r : Reponse | p.oclAsType(PageQuestion).question.reponse)]
+									<label>
+							            <input type="checkbox" name="question-[aQuestionnaire.page->indexOf(p) /]" value="question-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]"> [r.texte /]
+							        	<input type="hidden" name="reponse-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]" value="[r.estVraie /]">
+									</label>
+								[/for]
+							[else]
+								[for (r : Reponse | p.oclAsType(PageQuestion).question.reponse)]
+									<label>
+							            <input type="radio" name="question-[aQuestionnaire.page->indexOf(p) /]" value="question-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]"> [r.texte /]
+							        	<input type="hidden" name="reponse-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]" value="[r.estVraie /]">
+									</label>
+								[/for]
+							[/if]
+						</fieldset>
 					</div>
-					<div id="navButtons">
+					<div role="group">
 			            [if (aQuestionnaire.retourAutorise)]<input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">[/if]
 			            <input type="button" value="Suivant" onclick="pageSuivante()" id="nextButton">
 			        </div>
@@ -58,31 +77,31 @@
 				[if p.oclIsTypeOf(PageSoumission)]
 					<div>
 						[for (q : Question | p.oclAsType(PageSoumission).question)]
-							<h2>[q.ennonce /]</h2>
-							<div>
+							<fieldset>
+								<legend>[q.ennonce /]</legend>
 								[if q.reponsesMultiples]
 									[for (r : Reponse | q.reponse)]
 										<label>
-								            <input type="checkbox" checked="TODO"> [r.texte /]
+								            <input type="checkbox" name="soumission-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]" disabled> [r.texte /]
 								        </label>
 									[/for]
 								[else]
 									[for (r : Reponse | q.reponse)]
 										<label>
-								            <input type="radio" checked="TODO"> [r.texte /]
+								            <input type="radio" name="soumission-[aQuestionnaire.page->indexOf(p) /]-[p.oclAsType(PageQuestion).question.reponse->indexOf(r) /]" disabled> [r.texte /]
 								        </label>
 									[/for]
 								[/if]
-							</div>
+							</fieldset>
 						[/for]
 					</div>
-					<div id="navButtons">
+					<div role="group">
 			            [if (aQuestionnaire.retourAutorise)]<input type="button" value="Retour" onclick="pagePrecedente()" id="previousButton">[/if]
 			            <input type="button" value="Soumettre" onclick="showAnswers()" id="submitButton">
 			        </div>
 				[/if]
 				[if p.oclIsTypeOf(PageResultat)]
-					<h2>Vous avez obtenu un score de <span>TODO</span></h2>
+					<p>Vous avez obtenu un score de <b><span id="resultat">0</span>/[aQuestionnaire.page->size() - 2 /]</b>.</p>
 				[/if]
             </article>
         [/for]
