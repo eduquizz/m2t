@@ -80,13 +80,13 @@ if (difficulty = 4) then 'pico-color-pumpkin-350' else
 								[if q.reponsesMultiples]
 									[for (r : Reponse | q.reponse)]
 										<label>
-								            <input type="checkbox" name="question-[aQuestionnaire.page->indexOf(p) /]-[q.reponse->indexOf(r) /]" disabled> [r.texte /]
+								            <input type="checkbox" name="question-[p.oclAsType(PageSoumission).question->indexOf(q) /]-[q.reponse->indexOf(r) /]" disabled> [r.texte /]
 								        </label>
 									[/for]
 								[else]
 									[for (r : Reponse | q.reponse)]
 										<label>
-								            <input type="radio" name="question-[aQuestionnaire.page->indexOf(p) /]-[q.reponse->indexOf(r) /]" disabled> [r.texte /]
+								            <input type="radio" name="question-[p.oclAsType(PageSoumission).question->indexOf(q) /]-[q.reponse->indexOf(r) /]" disabled> [r.texte /]
 								        </label>
 									[/for]
 								[/if]
