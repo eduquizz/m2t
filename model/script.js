@@ -30,7 +30,7 @@ function saveAnswer() {
 }
 
 function pageSuivante() {
-    console.log("Index : " + pageIndex);
+    //console.log("Index : " + pageIndex);
     const articles = document.getElementsByTagName("article");
 	saveAnswer();
     if (pageIndex >= 0 && pageIndex < articles.length - 3) {
@@ -47,7 +47,7 @@ function pageSuivante() {
 }
 
 function pagePrecedente() {
-	console.log("Index : " + pageIndex);
+	//console.log("Index : " + pageIndex);
 
 	const articles = document.getElementsByTagName("article");
 	const main = document.getElementsByTagName("main")[0];
@@ -63,39 +63,57 @@ function pagePrecedente() {
 }
 
 function showAnswers() {
-	console.log("Réponses de l'utilisateur :", reponses);
+	//console.log("Réponses de l'utilisateur :", reponses);
 
 	reponses.forEach(reponse => {
 		const input = document.getElementsByName(reponse)[0];
 		if (input && input.getAttribute("name") === reponse) {
-			console.log("input", input.getAttribute("name"));
-			console.log("reponse", reponse);
 			input.checked = true;
 		}
 	});
 }
 
 function showResults() {
-    // Calculer le score ou afficher les réponses dans la dernière section
+	// Calculer le score ou afficher les réponses dans la dernière section
 	let score = 0;
-    const resultSpan = document.querySelector('article:last-of-type h2 span');
+	const resultSpan = document.getElementById("resultat");
 	const articles = document.getElementsByTagName("article");
 
-	const inputs = document.querySelector(`input[type="hidden"]`);
-	console.log("inputs", inputs);
-		/*for (const input of inputs) {
-			if (input && input.getAttribute("type") === "hidden") {
-				console.log("input", input);
-				if (input.getAttribute("value") === "true") {
+	let inputs = document.querySelectorAll("input[type='hidden']");
+	let compteur = 0;
+	let correctAnswers = {};
+
+	// Compter le nombre de bonnes réponses pour chaque question
+	for (const input of inputs) {
+		let questionNumber = parseInt(input.getAttribute("name").split("-")[1], 10);
+		if (input.getAttribute("value") === "true") {
+			if (!correctAnswers[questionNumber]) {
+				correctAnswers[questionNumber] = 0;
+			}
+			correctAnswers[questionNumber]++;
+		}
+	}
+
+	// Vérifier les réponses de l'utilisateur
+	for (const reponse of reponses) {
+		for (const input of inputs) {
+			let questionNumber = parseInt(input.getAttribute("name").split("-")[1], 10);
+			let input_text = questionNumber + "-" + input.getAttribute("name").split("-")[2];
+			let reponse_text = reponse.split("-")[1] + "-" + reponse.split("-")[2];
+
+			if (input && input_text === reponse_text && input.getAttribute("value") === "true") {
+				compteur++;
+				if (compteur === correctAnswers[questionNumber]) {
 					score++;
+					compteur = 0; // Reset the counter for the next question
 				}
 			}
-		}*/
-	
+		}
+	}
 
-    resultSpan.textContent = `${score} / ${articles.length - 2}`;
+	resultSpan.textContent = `${score}`;
 
-    // Afficher la section des résultats
-    articles[pageIndex].classList.add("hidden");
-    articles[articles.length - 1].classList.remove("hidden");
+	// Afficher la section des résultats
+	articles[pageIndex].classList.add("hidden");
+	articles[articles.length - 1].classList.remove("hidden");
 }
